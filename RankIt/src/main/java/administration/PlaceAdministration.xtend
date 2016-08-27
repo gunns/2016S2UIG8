@@ -1,0 +1,5 @@
+package administration
+
+class PlaceAdministration {
+	
+}
