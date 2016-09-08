@@ -1,13 +1,15 @@
-package administracion
+package administration.service
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.Date
+import administration.score.Score
 
 @Accessors
-class Prestacion
-{
-	List<Calificacion> calificaciones
+class Pres {
+
+
+	List<Score> calificaciones
 	String nombre
 	Boolean estaHabilitado
 	Date fechaRegistro

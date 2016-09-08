@@ -1,14 +1,14 @@
 package administration.score
 
-import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.List
-import java.util.Date
+import administration.service.Pres
 import administration.user.User
+import java.util.Date
+import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class Score
 {
-	List<Prestacion> evaluados
+	Pres evaluado
 	int puntos
 	Date fechaCalificacion
 	User user
@@ -16,7 +16,6 @@ class Score
 	
 	new()
 	{
-		evaluados = newArrayList
 		puntos = 0
 		fechaCalificacion = new Date()	//se inicializa con la fecha actual
 	}
