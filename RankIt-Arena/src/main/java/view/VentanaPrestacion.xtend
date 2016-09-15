@@ -1,7 +1,7 @@
 package view
 
-import administration.place.Place
-import appModel.PlaceAdminModel
+import administracion.prestacion.Prestacion
+import appModel.ModeloAdminPrestaciones
 import java.awt.Color
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
@@ -14,9 +14,9 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
-class PlaceWindow extends SimpleWindow<PlaceAdminModel> {
+class VentanaPrestacion extends SimpleWindow<ModeloAdminPrestaciones> {
 	
-	new(WindowOwner parent, PlaceAdminModel model) {
+	new(WindowOwner parent, ModeloAdminPrestaciones model) {
 		super(parent, model)
 	}
 	
@@ -88,29 +88,29 @@ class PlaceWindow extends SimpleWindow<PlaceAdminModel> {
 	def crearTablero(Panel param){
 		new Label(param).text = ""
 		
-		var tabla = new Table<Place>(param,Place) => [
-			items <=> "places"
-			value <=> "selectedP"
+		var tabla = new Table<Prestacion>(param,Prestacion) => [
+			items <=> "lugares"
+			value <=> "lugarSeleccionado"
 		]
 		
 		new Column(tabla)=>[
 			title= "Fecha"
-			bindContentsToProperty("registerDate")
+			bindContentsToProperty("freg")
 		]
 		
 		new Column(tabla)=>[
 			title= "Nombre"
-			bindContentsToProperty("name")	
+			bindContentsToProperty("nombre")	
 		]
 		
 		new Column(tabla)=>[
 			title = "Habilitado"
-			bindContentsToProperty("enabled")
+			bindContentsToProperty("habilitado")
 		]
 		
 	}
 	
 	def crearEtiqueta(Panel paramPanel, String text){
-		var lab =new Label (paramPanel).text = text
+		new Label (paramPanel).text = text
 	}
 }

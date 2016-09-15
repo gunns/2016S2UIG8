@@ -1,17 +1,17 @@
-package administration.score
+package administracion.calificacion
 
-import administration.service.Pres
-import administration.user.User
+import administracion.prestacion.Prestacion
 import java.util.Date
 import org.eclipse.xtend.lib.annotations.Accessors
+import administracion.usuario.Usuario
 
 @Accessors
-class Score
+class Calificacion
 {
-	Pres evaluado
+	Prestacion evaluado
 	int puntos
 	Date fechaCalificacion
-	User user
+	Usuario user
 	Boolean esOfensiva
 	
 	new()

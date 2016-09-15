@@ -1,33 +1,27 @@
 package view
 
-import administration.dummy.DummyData
-import appModel.ModelMenu
-import appModel.PlaceAdminModel
-import appModel.ScoreAdminModel
-import appModel.UserAdminModel
+import administracion.dummy.DummyData
+import appModel.ModeloMenu
+import appModel.ModeloAdminCalificaciones
+import appModel.ModeloAdminPrestaciones
+import appModel.ModeloAdminUsuarios
 import org.uqbar.arena.Application
 
 class RankItApplication extends Application {
-		
-		
-	
-	
-	
+
 	override protected createMainWindow() {
-		val model = new ModelMenu
-		model.placeAdmin = new PlaceAdminModel=>[
-			places = new DummyData().crearPlaceDummy
-			selectedP = places.get(0)
+		val modelo = new ModeloMenu
+		modelo.adminPres = new ModeloAdminPrestaciones => [
+			lugares = new DummyData().crearPlaceDummy
+			lugarSeleccionado = lugares.get(0)
 		]
-		model.scoreAdmin = new ScoreAdminModel
-		model.userAdmin = new UserAdminModel
-		new MenuWindow(this,model)
+		modelo.adminCal = new ModeloAdminCalificaciones
+		modelo.adminUsuarios = new ModeloAdminUsuarios
+		new VentanaMenu(this, modelo)
 	}
-	
-	
-	
+
 	def static void main(String[] args) {
 		new RankItApplication().start()
 	}
-	
+
 }
