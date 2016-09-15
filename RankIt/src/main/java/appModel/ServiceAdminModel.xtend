@@ -1,5 +1,0 @@
-package appModel
-
-class ServiceAdminModel {
-	
-}

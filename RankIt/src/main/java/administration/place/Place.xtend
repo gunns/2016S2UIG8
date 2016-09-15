@@ -18,6 +18,10 @@ class Place {
 	this.id = id
 	}
 	
+	new() {
+	}
+	
+	
 	def getId(){
 		return this.id
 		}
