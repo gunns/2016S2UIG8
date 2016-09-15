@@ -10,7 +10,7 @@ class DummyData {
 		pam.add(new Prestacion()=>[
 			freg = DateTime.now
 			nombre = "Pizzeria Los HDP"
-			habilitado = true
+			habilitado = false
 		])
 		pam.add(new Prestacion()=>[
 			freg = DateTime.now.minusDays(3)

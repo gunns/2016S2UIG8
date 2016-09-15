@@ -39,7 +39,7 @@ class VentanaMenu extends SimpleWindow<ModeloMenu>{
 		new Button(firstPanel)=>[
 			caption = "Adm Lugares"
 			onClick [ |
-				new VentanaPrestacion(this,this.modelObject.adminPres).open
+				new VentanaLugares(this,this.modelObject.adminPres).open
 				this.close
 			]
 		]

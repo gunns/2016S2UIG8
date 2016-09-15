@@ -14,9 +14,19 @@ class ModeloAdminPrestaciones {
 		Prestacion lugarSeleccionado
 		Prestacion servicioSeleccionado
 		String busqueda
-		
-		def addPlace(Prestacion p){
+
+		def agregarLugar(Prestacion p){
 			this.lugares.add(p)
 		}
 		
+		def agregarServicio(Prestacion p){
+			this.servicios.add(p)
+		}
+		def habilitados(){
+			var copy =this.lugares.filter[it | it.habilitado]
+			copy.size
+		}
+		def deshabilitados(){
+			this.lugares.size - this.habilitados
+		}
 }

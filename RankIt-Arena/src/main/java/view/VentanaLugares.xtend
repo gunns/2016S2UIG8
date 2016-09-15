@@ -14,7 +14,7 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
-class VentanaPrestacion extends SimpleWindow<ModeloAdminPrestaciones> {
+class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 	
 	new(WindowOwner parent, ModeloAdminPrestaciones model) {
 		super(parent, model)
@@ -42,18 +42,24 @@ class VentanaPrestacion extends SimpleWindow<ModeloAdminPrestaciones> {
 		
 		this.crearEtiqueta(firstPanel,"Lugares inscriptos: ")
 		
-		var ins = new Label (firstPanel).text= "10 (ej)"
-		ins.foreground = Color.BLUE
+		new Label (firstPanel)=>[
+			bindValueToProperty="lugares.size"
+			foreground = Color.BLUE
+		]
 		
 		this.crearEtiqueta(firstPanel,"Habilitados: ")
 		
-		var hab = new Label (firstPanel).text= "2 (ej)"
-		hab.foreground = Color.BLUE
+		new Label (firstPanel)=>[
+			bindValueToProperty="habilitados"
+			foreground = Color.BLUE
+		]
 		
 		this.crearEtiqueta(firstPanel,"Deshabilitados:")
-
-		var des = new Label (firstPanel).text= "8(ej)"
-		des.foreground = Color.RED
+		
+		new Label (firstPanel)=>[
+			bindValueToProperty="deshabilitados"	
+			foreground = Color.RED
+		]
 		
 		// << Fin Panel Horizontal superior 
 		
