@@ -2,7 +2,9 @@ package administration.place
 
 import java.util.LinkedList
 import org.joda.time.DateTime
+import org.uqbar.commons.utils.Observable
 
+@Observable
 class PlaceAdministration {
 	
 	LinkedList<Place> places

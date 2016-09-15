@@ -1,8 +1,10 @@
 package administration.place
 
-import org.joda.time.DateTime
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.joda.time.DateTime
+import org.uqbar.commons.utils.Observable
 
+@Observable
 class Place {
 	@Accessors DateTime registerDate
 	@Accessors String name
