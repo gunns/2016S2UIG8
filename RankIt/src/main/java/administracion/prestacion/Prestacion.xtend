@@ -19,6 +19,8 @@ class Prestacion {
 	}
 	
 	new() {
+		this.nombre=""
+		this.habilitado=false
 	}
 	
 	

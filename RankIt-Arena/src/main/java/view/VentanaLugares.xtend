@@ -37,26 +37,26 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		
 		
 		// Panel Horizontal superior >>>>>>>>
-		var Panel firstPanel = new Panel(mainPanel)
-		firstPanel.layout = new HorizontalLayout
+		var Panel primerPanel = new Panel(mainPanel)
+		primerPanel.layout = new HorizontalLayout
 		
-		this.crearEtiqueta(firstPanel,"Lugares inscriptos: ")
+		this.crearEtiqueta(primerPanel,"Lugares inscriptos: ")
 		
-		new Label (firstPanel)=>[
+		new Label (primerPanel)=>[
 			bindValueToProperty="lugares.size"
 			foreground = Color.BLUE
 		]
 		
-		this.crearEtiqueta(firstPanel,"Habilitados: ")
+		this.crearEtiqueta(primerPanel,"Habilitados: ")
 		
-		new Label (firstPanel)=>[
+		new Label (primerPanel)=>[
 			bindValueToProperty="habilitados"
 			foreground = Color.BLUE
 		]
 		
-		this.crearEtiqueta(firstPanel,"Deshabilitados:")
+		this.crearEtiqueta(primerPanel,"Deshabilitados:")
 		
-		new Label (firstPanel)=>[
+		new Label (primerPanel)=>[
 			bindValueToProperty="deshabilitados"	
 			foreground = Color.RED
 		]
@@ -64,23 +64,33 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		// << Fin Panel Horizontal superior 
 		
 		// Inicio del panel divisor de la tabla y los datos >>
-		var Panel secondPanel = new Panel(mainPanel)
-		secondPanel.layout = new ColumnLayout(2)
-		var Panel firstColumn = new Panel(secondPanel)
-		var Panel secondColumn = new Panel (secondPanel)
+		var Panel segundoPanel = new Panel(mainPanel)
+		segundoPanel.layout = new ColumnLayout(2)
+		var Panel primeraColumna = new Panel(segundoPanel)
+		var Panel segundaColumna = new Panel (segundoPanel)
 		//Tablero >>
 		
 		
 		
 		//<< Tablero
-		this.crearTablero(secondColumn)
+		this.crearTablero(segundaColumna)
 		//>> Datos
 		//var Panel thirdPanel = new Panel(secondPanel)
 		
 
 		//<< Datos
-		var Panel thirdPanel = new Panel(firstColumn)
-		this.crearEtiqueta(thirdPanel,"Nombre")
+		
+		//Panel vertical >>
+		var Panel tercerPanel = new Panel(primeraColumna)
+		
+		
+		//Panel Horizontal dentro del vertical Nombre: <NombreLugar> >>
+		var Panel cuartoPanel = new Panel(tercerPanel)
+		cuartoPanel.layout = new HorizontalLayout
+		this.crearEtiqueta(cuartoPanel,"Nombre: ")
+		new Label (cuartoPanel)=>[
+			bindValueToProperty="lugarSeleccionado.nombre"
+		]
 		
 		//var Panel fourthPanel = new Panel(thirdPanel)
 		//fourthPanel.layout = new HorizontalLayout

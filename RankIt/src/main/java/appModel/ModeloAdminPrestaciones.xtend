@@ -11,8 +11,8 @@ import org.uqbar.commons.utils.Observable
 class ModeloAdminPrestaciones {
 		List<Prestacion> lugares = new ArrayList<Prestacion>
 		List<Prestacion> servicios = new ArrayList<Prestacion>
-		Prestacion lugarSeleccionado
-		Prestacion servicioSeleccionado
+		Prestacion lugarSeleccionado =new Prestacion()
+		Prestacion servicioSeleccionado = new Prestacion()
 		String busqueda
 
 		def agregarLugar(Prestacion p){
