@@ -13,6 +13,9 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.widgets.CheckBox
 
 class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 	
@@ -43,26 +46,40 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		this.crearEtiqueta(primerPanel,"Lugares inscriptos: ")
 		
 		new Label (primerPanel)=>[
-			bindValueToProperty="lugares.size"
+			bindValueToProperty="buscarL.size"
 			foreground = Color.BLUE
 		]
 		
 		this.crearEtiqueta(primerPanel,"Habilitados: ")
 		
 		new Label (primerPanel)=>[
-			bindValueToProperty="habilitados"
+			bindValueToProperty="habilitadosL"
 			foreground = Color.BLUE
 		]
 		
 		this.crearEtiqueta(primerPanel,"Deshabilitados:")
 		
 		new Label (primerPanel)=>[
-			bindValueToProperty="deshabilitados"	
+			bindValueToProperty="deshabilitadosL"	
 			foreground = Color.RED
 		]
 		
 		// << Fin Panel Horizontal superior 
 		
+		var Panel lugares =new Panel(mainPanel).layout = new HorizontalLayout
+		crearEtiqueta(lugares, "Lugares")
+		
+		
+		// Panel de Busqueda >>
+		
+		var Panel panelDeBusqueda = new Panel (mainPanel)
+		panelDeBusqueda.layout = new HorizontalLayout	
+		crearEtiqueta(panelDeBusqueda,"Buscar por nombre de lugar")
+		new TextBox(panelDeBusqueda)=>[
+			bindValueToProperty= "busquedaL"
+		]
+		
+		//<< fin Panel de Busqueda
 		// Inicio del panel divisor de la tabla y los datos >>
 		var Panel segundoPanel = new Panel(mainPanel)
 		segundoPanel.layout = new ColumnLayout(2)
@@ -73,7 +90,15 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		
 		
 		//<< Tablero
-		this.crearTablero(segundaColumna)
+		var Panel panelDeTablero = new Panel(segundaColumna)
+		
+		this.crearTablero(panelDeTablero)
+		
+		new Button(panelDeTablero) =>[
+			caption = "Nuevo"
+			onClick [ | ]
+		]
+		
 		//>> Datos
 		//var Panel thirdPanel = new Panel(secondPanel)
 		
@@ -85,27 +110,60 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		
 		
 		//Panel Horizontal dentro del vertical Nombre: <NombreLugar> >>
-		var Panel cuartoPanel = new Panel(tercerPanel)
+		/*var Panel cuartoPanel = new Panel(tercerPanel)
 		cuartoPanel.layout = new HorizontalLayout
 		this.crearEtiqueta(cuartoPanel,"Nombre: ")
 		new Label (cuartoPanel)=>[
 			bindValueToProperty="lugarSeleccionado.nombre"
-		]
+		]*/
+		crearTercerPanel(tercerPanel)
 		
-		//var Panel fourthPanel = new Panel(thirdPanel)
-		//fourthPanel.layout = new HorizontalLayout
-		
-		//new Label(firstPanel).text = "Nombre: "
-		//anew Label(fourthPanel).text = "Sushi Pop"
 	}
 	
+	def crearTercerPanel(Panel param){
+		var Panel primeroPanel = new Panel(param)
+		primeroPanel.layout = new HorizontalLayout
+		this.crearEtiqueta(primeroPanel, "Nombre: ")
+		new Label(primeroPanel) =>[
+			bindValueToProperty("lugarSeleccionado.nombre")
+		]
+		
+		this.crearEtiqueta(param, "Nombre")
+		new TextBox(param) =>[
+			
+			bindValueToProperty="lugarSeleccionado.nombre"	 
+		]
+		var Panel segundoPanel = new Panel(param)
+		segundoPanel.layout = new HorizontalLayout
+		crearEtiqueta(segundoPanel,"Habilitado")
+		new CheckBox(segundoPanel)=>[
+			value <=> "habilitarSeleccionadoL"
+		]
+		var Panel tercerPanel = new Panel(param)
+		
+		//crearColumna(param,"Rating Promedio","")
+		new Button(tercerPanel)=>[
+			caption = "Revisar Publicaciones"
+			onClick [ | ]
+		]
+		new Button(tercerPanel)=>[
+			caption = "Eliminar"
+			onClick [ | modelObject.eliminarL]
+		]
+	}
 	
+	def crearColumna(Panel param,String text1, String property){
+		var Panel primerPanel = new Panel(param)
+		primerPanel.layout = new ColumnLayout(2)
+		crearEtiqueta(primerPanel,text1)
+		new Label(primerPanel).bindValueToProperty(property)
+	}
 	
 	def crearTablero(Panel param){
 		new Label(param).text = ""
 		
 		var tabla = new Table<Prestacion>(param,Prestacion) => [
-			items <=> "lugares"
+			items <=> "buscarL"
 			value <=> "lugarSeleccionado"
 		]
 		
