@@ -21,6 +21,7 @@ class Prestacion {
 	new() {
 		this.nombre=""
 		this.habilitado=false
+		this.freg = DateTime.now
 	}
 	
 	

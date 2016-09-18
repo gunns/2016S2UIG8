@@ -17,7 +17,7 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.CheckBox
 
-class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
+class VentanaServicios extends SimpleWindow<ModeloAdminPrestaciones> {
 	
 	new(WindowOwner parent, ModeloAdminPrestaciones model) {
 		super(parent, model)
@@ -33,7 +33,7 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 	
 	override createMainTemplate(Panel mainPanel){
 		
-		this.title = "Rank-IT --> Adm Lugares"
+		this.title = "Rank-IT --> Adm Servicios"
 		
 		
 		new Label(mainPanel).text = "Resumen de situación:"
@@ -46,37 +46,37 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		this.crearEtiqueta(primerPanel,"Lugares inscriptos: ")
 		
 		new Label (primerPanel)=>[
-			bindValueToProperty="buscarL.size"
+			bindValueToProperty="buscarS.size"
 			foreground = Color.BLUE
 		]
 		
 		this.crearEtiqueta(primerPanel,"Habilitados: ")
 		
 		new Label (primerPanel)=>[
-			bindValueToProperty="habilitadosL"
+			bindValueToProperty="habilitadosS"
 			foreground = Color.BLUE
 		]
 		
 		this.crearEtiqueta(primerPanel,"Deshabilitados:")
 		
 		new Label (primerPanel)=>[
-			bindValueToProperty="deshabilitadosL"	
+			bindValueToProperty="deshabilitadosS"	
 			foreground = Color.RED
 		]
 		
 		// << Fin Panel Horizontal superior 
 		
 		var Panel lugares =new Panel(mainPanel).layout = new HorizontalLayout
-		crearEtiqueta(lugares, "Lugares")
+		crearEtiqueta(lugares, "Servicios")
 		
 		
 		// Panel de Busqueda >>
 		
 		var Panel panelDeBusqueda = new Panel (mainPanel)
 		panelDeBusqueda.layout = new HorizontalLayout	
-		crearEtiqueta(panelDeBusqueda,"Buscar por nombre de lugar")
+		crearEtiqueta(panelDeBusqueda,"Buscar por nombre de servicio")
 		new TextBox(panelDeBusqueda)=>[
-			bindValueToProperty= "busquedaL"
+			bindValueToProperty= "busquedaS"
 		]
 		
 		//<< fin Panel de Busqueda
@@ -96,7 +96,7 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		
 		new Button(panelDeTablero) =>[
 			caption = "Nuevo"
-			onClick [ | new NuevoLugarWindow(this, this.modelObject).open]
+			onClick [ | new NuevoServicioWindow(this, this.modelObject).open]
 		]
 		
 		//>> Datos
@@ -125,19 +125,19 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		primeroPanel.layout = new HorizontalLayout
 		this.crearEtiqueta(primeroPanel, "Nombre: ")
 		new Label(primeroPanel) =>[
-			bindValueToProperty("lugarSeleccionado.nombre")
+			bindValueToProperty("servicioSeleccionado.nombre")
 		]
 		
 		this.crearEtiqueta(param, "Nombre")
 		new TextBox(param) =>[
 			
-			bindValueToProperty="lugarSeleccionado.nombre"	 
+			bindValueToProperty="servicioSeleccionado.nombre"	 
 		]
 		var Panel segundoPanel = new Panel(param)
 		segundoPanel.layout = new HorizontalLayout
 		crearEtiqueta(segundoPanel,"Habilitado")
 		new CheckBox(segundoPanel)=>[
-			value <=> "habilitarSeleccionadoL"
+			value <=> "habilitarSeleccionadoS"
 		]
 		var Panel tercerPanel = new Panel(param)
 		
@@ -148,7 +148,7 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		]
 		new Button(tercerPanel)=>[
 			caption = "Eliminar"
-			onClick [ | modelObject.eliminarL]
+			onClick [ | modelObject.eliminarS]
 		]
 	}
 	
@@ -163,8 +163,8 @@ class VentanaLugares extends SimpleWindow<ModeloAdminPrestaciones> {
 		new Label(param).text = ""
 		
 		var tabla = new Table<Prestacion>(param,Prestacion) => [
-			items <=> "buscarL"
-			value <=> "lugarSeleccionado"
+			items <=> "buscarS"
+			value <=> "servicioSeleccionado"
 		]
 		
 		new Column(tabla)=>[
