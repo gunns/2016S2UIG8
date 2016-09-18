@@ -52,7 +52,7 @@ class VentanaMenu extends SimpleWindow<ModeloMenu>{
 		]
 		new Button(firstPanel)=>[
 			caption = "Adm Calificacion"
-			onClick [ |
+			onClick [ | new VentanaCalificaciones(this,this.modelObject.adminCal).open
 				this.close
 			]
 		]

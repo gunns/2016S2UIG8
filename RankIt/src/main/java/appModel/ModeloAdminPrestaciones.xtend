@@ -103,6 +103,8 @@ class ModeloAdminPrestaciones {
 			actualizarIHD()
 		}
 		
+		
+		
 		def buscarL(){
 				this.lugares.filter[it | it.nombre.contains(busquedaL)].toList
 		}
@@ -114,7 +116,7 @@ class ModeloAdminPrestaciones {
 			actualizarIHD
 			lugarSeleccionado.habilitado
 		}
-		
+
 		def eliminarL(){
 			if (lugares.size > 0){
 				this.lugares.remove(lugarSeleccionado)
