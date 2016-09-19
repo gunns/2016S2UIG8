@@ -16,7 +16,10 @@ class RankItApplication extends Application {
 			lugarSeleccionado = lugares.get(0)
 		]
 		modelo.adminCal = new ModeloAdminCalificaciones
-		modelo.adminUsuarios = new ModeloAdminUsuarios
+		modelo.adminUsuarios = new ModeloAdminUsuarios =>[
+			usuarios = new DummyData().crearUsuarios
+			usuarioSeleccionado = usuarios.get(0)
+		]
 		new VentanaMenu(this, modelo)
 	}
 

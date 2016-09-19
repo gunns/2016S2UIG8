@@ -17,13 +17,7 @@ class ModeloAdminCalificaciones {
 	String evaluado= ""
 	Calificacion calificacionSeleccionada = new Calificacion
 	Calificacion nuevaCalificacion = new Calificacion
-	Usuario admin = new Usuario()=>[
-		nombre="ADMIN"
-		fechaRegistro = DateTime.now
-		estaActivo =true
-		calificaciones = newArrayList
-		contraseña="123" 
-	]
+	Usuario admin = new Usuario("ADMIN","123")
 	
 		def agregarCalificacion(){
 		this.calificaciones.add(nuevaCalificacion)

@@ -58,7 +58,7 @@ class VentanaMenu extends SimpleWindow<ModeloMenu>{
 		]
 		new Button(firstPanel)=>[
 			caption = "Adm Usuarios"
-			onClick [ |
+			onClick [ | new VentanaUsuario(this,this.modelObject.adminUsuarios).open
 				this.close
 			]
 		]
